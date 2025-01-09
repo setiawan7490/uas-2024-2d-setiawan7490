@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'views/profile_view.dart';
 import 'views/home_view.dart';
 import 'views/message_view.dart';
 import 'views/guest_view.dart';
@@ -27,7 +26,6 @@ class MyApp extends StatelessWidget {
         '/signin': (context) => SignInView(),
         '/home': (context) => HomeView(),
         '/message': (context) => MessageView(),
-        '/profile': (context) => ProfileView(),
       },
     );
   }

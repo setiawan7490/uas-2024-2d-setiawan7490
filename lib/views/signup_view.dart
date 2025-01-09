@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import '/controller/signin_controller.dart';
+import '/controller/signup_controller.dart';
 import '/provider/signup_provider.dart';
-import '/provider/signin_provider.dart';
 
-class SignInView extends StatelessWidget {
-  final SignInProvider provider = SignInProvider(SignUpProvider());
+class SignUpView extends StatelessWidget {
+  final SignUpProvider provider = SignUpProvider();
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final controller = SignInController(provider);
+    final controller = SignUpController(provider);
 
     return Scaffold(
       body: SafeArea(
@@ -22,9 +23,15 @@ class SignInView extends StatelessWidget {
               SizedBox(height: 20),
               Center(
                 child: Text(
-                  "Sign In",
+                  "Sign Up",
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
+              ),
+              SizedBox(height: 10),
+              Text("Full Name"),
+              TextField(
+                controller: nameController,
+                decoration: InputDecoration(hintText: "Your Name"),
               ),
               SizedBox(height: 10),
               Text("Email"),
@@ -39,35 +46,26 @@ class SignInView extends StatelessWidget {
                 obscureText: true,
                 decoration: InputDecoration(hintText: "********"),
               ),
+              SizedBox(height: 10),
+              Text("Confirm Password"),
+              TextField(
+                controller: confirmPasswordController,
+                obscureText: true,
+                decoration: InputDecoration(hintText: "********"),
+              ),
               SizedBox(height: 20),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    controller.onSignIn(
+                    controller.onSignUp(
+                      nameController.text,
                       emailController.text,
                       passwordController.text,
+                      confirmPasswordController.text,
                       context,
                     );
                   },
-                  child: Text("Sign In"),
-                ),
-              ),
-              SizedBox(height: 20),
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Don't have an account? "),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(context, '/signup');
-                      },
-                      child: Text(
-                        "Sign Up Now",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
+                  child: Text("Sign Up"),
                 ),
               ),
             ],

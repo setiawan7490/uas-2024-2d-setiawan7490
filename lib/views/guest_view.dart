@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../controller/guest_controller.dart';
+import '/controller/guest_controller.dart';
 
 class GuestView extends StatelessWidget {
   final GuestController controller = GuestController();
@@ -44,16 +44,25 @@ class GuestView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                 ElevatedButton(
-  onPressed: () {
-    // Pertama, jalankan onSignUp dari controller
-    controller.onSignUp();
-    // Kemudian, navigasi ke halaman signup
-    Navigator.pushNamed(context, '/signin');
-  },
-  child: Text("Sign In"),
-)
-
+                  ElevatedButton(
+                    onPressed: () {
+                      // Pertama, jalankan onSignIn dari controller
+                      controller.onSignIn();
+                      // Kemudian, navigasi ke halaman signin
+                      Navigator.pushNamed(context, '/signin');
+                    },
+                    child: Text("Sign In"),
+                  ),
+                  SizedBox(width: 20), // Jarak antara tombol
+                  ElevatedButton(
+                    onPressed: () {
+                      // Pertama, jalankan onSignUp dari controller
+                      controller.onSignUp();
+                      // Kemudian, navigasi ke halaman signup
+                      Navigator.pushNamed(context, '/signup');
+                    },
+                    child: Text("Sign Up"),
+                  ),
                 ],
               ),
             ],

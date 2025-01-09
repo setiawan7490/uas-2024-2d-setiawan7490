@@ -1,4 +1,4 @@
-import '../models/guest_model.dart';
+import '/models/guest_model.dart';
 
 class GuestProvider {
   GuestModels fetchMessage() {
